@@ -39,3 +39,12 @@ pip install -r requirements.txt
 python app.py
 ```
 
+## 🐳 Executar com Docker
+### 1. Build e run usando Docker Compose
+```
+docker-compose up --build
+```
+### 2. Acessar a API
+- Home: http://localhost:1313/
+- Itens: http://localhost:1313/items
+- Swagger UI: http://localhost:1313/swagger
