@@ -4,12 +4,20 @@ Este projeto é um laboratório prático para a criação de uma API RESTful uti
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📦 Tecnologias Utilizadas
 
-│
-├── app.py # Código principal da API Flask
-├── requirements.txt # Dependências do projeto
-├── Dockerfile # Imagem Docker da aplicação
-├── docker-compose.yml # Orquestração com Docker Compose
-├── static/
-│ └── swagger.json # Documentação Swagger da API
+- Python 3.9
+- Flask
+- Flask-JWT-Extended
+- Flask-Swagger-UI
+- Docker & Docker Compose
+
+---
+
+## 🔧 Como Executar Localmente
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/seu-usuario/lab_api.git
+cd lab_api
