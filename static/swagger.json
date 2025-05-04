@@ -1,0 +1,94 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "InovaTech API",
+    "version": "1.0",
+    "description": "Documentação da API do laboratório de criação de APIs"
+  },
+  "host": "localhost:1313",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Endpoint principal",
+        "description": "Verifica o status da API",
+        "responses": {
+          "200": {
+            "description": "Mensagem de status",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "summary": "Obter lista de itens",
+        "description": "Retorna uma lista de itens disponíveis.",
+        "responses": {
+          "200": {
+            "description": "Lista de itens",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login para gerar token JWT",
+        "description": "Gera um token JWT para autenticação.",
+        "responses": {
+          "200": {
+            "description": "Token de autenticação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/protected": {
+      "get": {
+        "summary": "Rota protegida",
+        "description": "Acessa uma rota protegida. Requer token JWT.",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acesso permitido à rota protegida",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Autenticação falhou ou token ausente"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Token JWT a ser informado no formato: Bearer {token}"
+    }
+  }
+}
