@@ -48,3 +48,12 @@ docker-compose up --build
 - Home: http://localhost:1313/
 - Itens: http://localhost:1313/items
 - Swagger UI: http://localhost:1313/swagger
+
+## 📄 Documentação com Swagger
+O Swagger UI está configurado para ler o arquivo static/swagger.json.
+
+Acesse:
+http://localhost:1313/swagger
+
+## ✍🏿 Autor
+Miguel Ectil
