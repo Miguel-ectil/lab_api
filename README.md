@@ -1,6 +1,6 @@
-# 🚀 InovaTech API - Laboratório de Criação de APIs
+# 🚀 Laboratório API Web
 
-Este projeto é um laboratório prático para a criação de uma API RESTful utilizando **Flask**, com autenticação **JWT**, documentação via **Swagger** e conteinerização com **Docker** e **Docker Compose**.
+Este projeto foi desenvolvido como parte de um **desafio proposto em laboratório** na disciplina de DeVops. O objetivo foi criar uma **API RESTful** com Python e Flask, implementando **autenticação via JWT**, documentação com **Swagger** e conteinerização utilizando **Docker** e **Docker Compose**.
 
 ---
 
