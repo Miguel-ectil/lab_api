@@ -12,8 +12,6 @@ Este projeto foi desenvolvido como parte de um **desafio proposto em laboratóri
 - Flask-Swagger-UI
 - Docker & Docker Compose
 
----
-
 ## 🔧 Como Executar Localmente
 
 ### 1. Clonar o repositório
