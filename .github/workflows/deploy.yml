@@ -32,4 +32,4 @@ jobs:
 
     steps:
       - name: Trigger Render Deploy Hook
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK}}
