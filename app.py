@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+import os
 
 app = Flask(__name__)
 
@@ -32,5 +33,7 @@ def login():
 def protected():
     return jsonify(message="Protected route")
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=1313)
+    port = int(os.environ.get("PORT", 1313))  
+    app.run(host='0.0.0.0', port=port)
