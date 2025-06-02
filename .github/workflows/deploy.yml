@@ -22,9 +22,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build Docker image for testing (de novo, porque a imagem não persiste entre jobs)
-        run: docker build -t my-app:test .
-
       - name: Run tests inside Docker container
         run: docker run --rm my-app:test python -m unittest teste_app
 
