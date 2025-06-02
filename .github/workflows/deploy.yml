@@ -6,30 +6,31 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
+      - name: Build Docker image for testing
+        run: docker build -t my-app:test .
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Run unit tests
-        run: python -m unittest teste_app
+      - name: Build Docker image for testing (de novo, porque a imagem não persiste entre jobs)
+        run: docker build -t my-app:test .
+
+      - name: Run tests inside Docker container
+        run: docker run --rm my-app:test python -m unittest teste_app
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
-
     steps:
       - name: Trigger Render Deploy Hook
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK}}
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
