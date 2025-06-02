@@ -6,6 +6,10 @@ on:
       - main
 
 jobs:
+  build:
+    - name: Build Docker image for testing
+    run: docker build -t my-app:test .
+
   test:
     runs-on: ubuntu-latest
 
@@ -13,18 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Install dependencies
+      - name: Run tests inside Docker container
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run unit tests
-        run: python -m unittest teste_app
+          docker run --rm my-app:test python -m unittest teste_app
 
   deploy:
     needs: test
@@ -32,4 +30,4 @@ jobs:
 
     steps:
       - name: Trigger Render Deploy Hook
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK}}
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
