@@ -14,17 +14,7 @@ jobs:
 
       - name: Build Docker image for testing
         run: docker build -t flask_app:test .
-
-  # test:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-
-  #     - name: Run tests inside Docker container
-  #       run: docker run --rm flask_app:test python -m unittest discover
-
+        
   test:
     needs: build
     runs-on: ubuntu-latest
