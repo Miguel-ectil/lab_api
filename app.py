@@ -5,7 +5,6 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 
-# Carrega variáveis do .env
 load_dotenv()
 
 app = Flask(__name__)
@@ -15,9 +14,8 @@ app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY", "default_secret")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
 
-# Swagger UI
 SWAGGER_URL = '/swagger'
-API_DOC_URL = '/static/swagger.json'  # Certifique-se que esse arquivo existe
+API_DOC_URL = '/static/swagger.json'  
 swaggerui_blueprint = get_swaggerui_blueprint(SWAGGER_URL, API_DOC_URL)
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
@@ -39,7 +37,6 @@ def login():
     username = data.get('username')
     password = data.get('password')
 
-    # Autenticação simples (apenas como exemplo)
     if username == 'admin' and password == 'password':
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
